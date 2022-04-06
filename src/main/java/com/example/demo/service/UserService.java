@@ -7,6 +7,7 @@ import com.example.demo.model.enums.Warning;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    private BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
 
     private UserMapper userMapper;
 
@@ -35,6 +38,7 @@ public class UserService {
     }
     public boolean insertUser(UserDTO userDTO){
         if(isUsernameUnique(userDTO)){
+            userDTO.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
             User user=userMapper.convertFromDTO(userDTO);
             userRepository.save(user);
             return true;
@@ -52,7 +56,8 @@ public class UserService {
        if(!user.isPresent()){
            return Warning.NOT_FOUND;
        }else{
-           if(user.get().getPassword().equals(password)){
+           //if(user.get().getPassword().equals(password)){
+           if(bCryptPasswordEncoder.matches(password,user.get().getPassword())){
                return Warning.SUCCESS;
            }else{
                return Warning.WRONG_PASS;
