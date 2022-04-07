@@ -13,5 +13,6 @@ public interface RestaurantRepository extends JpaRepository<Restaurant,Integer> 
     //findall
     Optional<Restaurant> findByName(String name);
     Optional<Restaurant> findByAdmin_Username(String username);
+    Optional<Restaurant> findByAdmin(User admin);
 
 }

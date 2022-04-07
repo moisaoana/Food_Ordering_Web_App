@@ -13,4 +13,5 @@ public interface FoodItemRepository extends JpaRepository<FoodItem,Integer> {
 
     List<FoodItem> findAllByRestaurant(Restaurant restaurant);
     List<FoodItem> findAllByRestaurantAndCategory(Restaurant restaurant, FoodCategory foodCategory);
+
 }

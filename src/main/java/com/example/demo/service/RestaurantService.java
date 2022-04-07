@@ -27,12 +27,19 @@ public class RestaurantService {
     @Autowired
     private DeliveryZoneRepository deliveryZoneRepository;
 
-    public List<Restaurant> getAllRestaurants(){
+    public List<Restaurant> getAllRestaurants() {
         return restaurantRepository.findAll();
     }
-    public boolean hasAdminRestaurantRegistered(String username){
-        Optional<Restaurant> restaurant=restaurantRepository.findByAdmin_Username(username);
+
+    public boolean hasAdminRestaurantRegistered(String username) {
+        Optional<Restaurant> restaurant = restaurantRepository.findByAdmin_Username(username);
         return restaurant.isPresent();
+    }
+    public Optional<Restaurant> findRestaurantByAdmin(String username){
+       return restaurantRepository.findByAdmin_Username(username);
+    }
+    public Optional<Restaurant> findRestaurantByAdmin(User admin){
+       return restaurantRepository.findByAdmin(admin);
     }
 
     public Warning insertRestaurant(RestaurantDTO restaurantDTO) {

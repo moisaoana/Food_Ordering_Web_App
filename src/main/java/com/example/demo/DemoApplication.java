@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.model.Order;
 import com.example.demo.model.Restaurant;
 import com.example.demo.model.User;
+import com.example.demo.model.enums.FoodCategory;
 import com.example.demo.model.enums.Status;
 import com.example.demo.model.enums.UserType;
 import org.springframework.boot.SpringApplication;
