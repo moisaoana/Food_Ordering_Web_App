@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,8 +27,8 @@ public class Restaurant {
     @OneToMany(cascade = CascadeType.ALL,mappedBy="restaurant",fetch = FetchType.EAGER)
     private Set<Order> orders;
 
-    @ManyToMany(mappedBy = "restaurants",fetch = FetchType.EAGER)
-    private Set<DeliveryZone> zones;
+    @ManyToMany(mappedBy = "restaurants",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<DeliveryZone> zones;
 
     public Restaurant(){
 
@@ -94,11 +95,11 @@ public class Restaurant {
         this.orders = orders;
     }
 
-    public Set<DeliveryZone> getZones() {
+    public List<DeliveryZone> getZones() {
         return zones;
     }
 
-    public void setZones(Set<DeliveryZone> zones) {
+    public void setZones(List<DeliveryZone> zones) {
         this.zones = zones;
     }
 }

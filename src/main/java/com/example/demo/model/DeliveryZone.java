@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name="zone")
@@ -13,11 +13,11 @@ public class DeliveryZone {
     @Column(unique= true,nullable=false)
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="restaurant_zones",
             joinColumns = @JoinColumn(name="zone_id"),
             inverseJoinColumns = @JoinColumn(name="restaurant_id"))
-    private Set<Restaurant> restaurants;
+    private List<Restaurant> restaurants;
 
     public DeliveryZone(){
 
@@ -48,11 +48,11 @@ public class DeliveryZone {
         this.name = name;
     }
 
-    public Set<Restaurant> getRestaurants() {
+    public List<Restaurant> getRestaurants() {
         return restaurants;
     }
 
-    public void setRestaurants(Set<Restaurant> restaurants) {
+    public void setRestaurants(List<Restaurant> restaurants) {
         this.restaurants = restaurants;
     }
 }

@@ -12,5 +12,6 @@ import java.util.Optional;
 public interface RestaurantRepository extends JpaRepository<Restaurant,Integer> {
     //findall
     Optional<Restaurant> findByName(String name);
+    Optional<Restaurant> findByAdmin_Username(String username);
 
 }
