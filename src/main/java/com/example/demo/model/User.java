@@ -3,7 +3,7 @@ package com.example.demo.model;
 import com.example.demo.model.enums.UserType;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -30,8 +30,8 @@ public class User {
     @OneToOne(mappedBy="admin")
     private Restaurant restaurant;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy="customer",fetch = FetchType.EAGER)
-    private Set<Order> orders;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy="customer")
+    private List<Order> orders;
 
     public Integer getId() {
         return id;
@@ -79,6 +79,22 @@ public class User {
 
     public void setType(UserType type) {
         this.type = type;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     public User(Integer id, String firstName, String lastName, String username, String password, UserType type) {

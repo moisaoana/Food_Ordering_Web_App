@@ -3,7 +3,7 @@ package com.example.demo.model;
 import com.example.demo.model.enums.Status;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name="orders")
@@ -24,8 +24,11 @@ public class Order {
     @JoinColumn(name="restaurant_id", nullable=false)
     private Restaurant restaurant;
 
-    @ManyToMany(mappedBy = "ordersSet",fetch = FetchType.EAGER)
-    private Set<FoodItem> foodItems;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="order_item",
+            joinColumns = @JoinColumn(name="order_id"),
+            inverseJoinColumns = @JoinColumn(name="item_id"))
+    private List<FoodItem> foodItems;
 
     public Order(){
 
@@ -76,11 +79,11 @@ public class Order {
         this.restaurant = restaurant;
     }
 
-    public Set<FoodItem> getFoodItems() {
+    public List<FoodItem> getFoodItems() {
         return foodItems;
     }
 
-    public void setFoodItems(Set<FoodItem> foodItems) {
+    public void setFoodItems(List<FoodItem> foodItems) {
         this.foodItems = foodItems;
     }
 }
