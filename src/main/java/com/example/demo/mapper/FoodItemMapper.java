@@ -25,4 +25,7 @@ public class FoodItemMapper {
         FoodCategory foodCategory=FoodCategory.values()[indexCategory];
         return  new FoodItem(foodItemDTO.getName(), foodItemDTO.getDescription(), price, foodCategory, restaurant);
     }
+    public FoodItemDTO convertToDTO(FoodItem foodItem){
+        return new FoodItemDTO(foodItem.getName(), foodItem.getDescription(),String.valueOf(foodItem.getPrice()),foodItem.getCategory().toString(),foodItem.getRestaurant().getAdmin().getUsername());
+    }
 }

@@ -8,19 +8,19 @@ import com.example.demo.mapper.RestaurantMapper;
 import com.example.demo.mapper.ZoneMapper;
 import com.example.demo.model.DeliveryZone;
 import com.example.demo.model.Restaurant;
+import com.example.demo.model.User;
+import com.example.demo.model.enums.UserType;
 import com.example.demo.model.enums.Warning;
 import com.example.demo.service.DeliveryZoneService;
 import com.example.demo.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class AdminProfileController {
@@ -31,6 +31,7 @@ public class AdminProfileController {
     private RestaurantService restaurantService;
 
     ZoneMapper zoneMapper=new ZoneMapper();
+    RestaurantMapper restaurantMapper=new RestaurantMapper();
 
     @GetMapping("/adminprofile")
     public List<ZoneDTO> getZones(){
@@ -40,6 +41,12 @@ public class AdminProfileController {
             dtos.add(zoneMapper.convertToDTO(z));
         }
         return dtos;
+    }
+    @GetMapping("/adminprofile/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    public RestaurantDTO getRestaurant(@PathVariable String username){
+        Optional<Restaurant> restaurant= restaurantService.findRestaurantByAdmin(username);
+        return restaurant.map(value -> restaurantMapper.convertToDTO(value)).orElse(null);
     }
     @PostMapping("/adminprofile")
     public ResponseEntity createRestaurant(@RequestBody RestaurantDTO restaurantDTO){

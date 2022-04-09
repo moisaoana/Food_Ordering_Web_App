@@ -24,4 +24,7 @@ public class FoodItemService {
         foodItemRepository.save(foodItem);
         return Warning.SUCCESS;
     }
+    public List<FoodItem> findAllByRestaurantName(String name){
+        return foodItemRepository.findAllByRestaurant_Name(name);
+    }
 }
