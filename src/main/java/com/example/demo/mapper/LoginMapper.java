@@ -14,7 +14,4 @@ public class LoginMapper {
         return loginDTO;
     }
 
-   //public User convertFromDTO(LoginDTO loginDTO){
-
-   // }
 }

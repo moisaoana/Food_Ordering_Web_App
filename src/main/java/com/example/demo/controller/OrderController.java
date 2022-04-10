@@ -27,14 +27,6 @@ public class OrderController {
             System.out.println(f.getName());
         }
         orderService.addOrder(orderDTO);
-        /*boolean result=userService.insertUser(userDTO);
-        if(result) {
-            return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(new ResponseDTO("User created"));
-        }else{
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ResponseDTO("Username exists!"));
-        }*/
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new ResponseDTO("Order created"));
     }

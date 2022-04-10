@@ -21,8 +21,7 @@ public class FoodItemMapper {
 
     public FoodItem convertFromDTO(FoodItemDTO foodItemDTO, Restaurant restaurant){
         double price=Double.parseDouble(foodItemDTO.getPrice());
-        int indexCategory=Integer.parseInt(foodItemDTO.getCategory());
-        FoodCategory foodCategory=FoodCategory.values()[indexCategory];
+        FoodCategory foodCategory=FoodCategory.valueOf(foodItemDTO.getCategory());
         return  new FoodItem(foodItemDTO.getName(), foodItemDTO.getDescription(), price, foodCategory, restaurant);
     }
     public FoodItemDTO convertToDTO(FoodItem foodItem){

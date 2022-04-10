@@ -23,7 +23,7 @@ public class ViewOrdersController {
 
     @GetMapping("/vieworders/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public List<OrderWithStatusDTO> getAllItemsFromMenu(@PathVariable String name){
+    public List<OrderWithStatusDTO> getAllOrders(@PathVariable String name){
         List<Order> orders=orderService.getOrdersByRestaurant(name);
         List<OrderWithStatusDTO> dtos=new ArrayList<>();
         for(Order o:orders){

@@ -22,7 +22,7 @@ public class ViewOrderHistoryController {
 
     @GetMapping("/vieworderhistory/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public List<OrderWithStatusDTO> getAllItemsFromMenu(@PathVariable String name){
+    public List<OrderWithStatusDTO> getAllOrders(@PathVariable String name){
         System.out.println("***********");
         List<Order> orders=orderService.getOrdersByCustomer(name);
         List<OrderWithStatusDTO> dtos=new ArrayList<>();

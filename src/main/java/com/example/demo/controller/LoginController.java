@@ -26,7 +26,7 @@ public class LoginController {
         return user.map(User::getType).orElse(null);
     }
     @PostMapping("/login")
-    public ResponseEntity createUser(@RequestBody LoginDTO loginDTO){
+    public ResponseEntity loginUser(@RequestBody LoginDTO loginDTO){
         System.out.println(loginDTO.getUsername()+" "+loginDTO.getPassword());
         Warning result=userService.loginUser(loginDTO.getUsername(),loginDTO.getPassword());
         if(result==Warning.SUCCESS){
