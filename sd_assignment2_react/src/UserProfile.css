@@ -1,0 +1,23 @@
+.UserProfile{
+    text-align: center;
+
+}
+.UserProfile-header {
+    background-color: #b3b3ff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.UserProfile-title{
+    margin-bottom:  25px;
+}
+.UserProfile-subtitle{
+    font-size: 20px;
+    color: #347c37;
+    font-weight: bold;
+    margin-bottom:  10px;
+}

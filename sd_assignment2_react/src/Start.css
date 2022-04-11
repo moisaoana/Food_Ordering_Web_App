@@ -31,3 +31,19 @@
 .Start-title{
     margin-bottom:  120px;
 }
+.ul {
+    background: #5e8dbc;
+    padding: 20px;
+    font-size: 18px;
+}
+.li {
+    background: #aad2f6;
+    color: darkblue;
+    margin: 5px;
+}
+.sub-li {
+    background: #78eabc;
+    color: #035a3c;
+    margin: 5px;
+}
+

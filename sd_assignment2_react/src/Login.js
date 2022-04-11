@@ -1,13 +1,14 @@
 import './Login.css';
 import React, {Component} from "react";
-import {Link, Switch, BrowserRouter, Route, Redirect} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
+
 
 
 class Login extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {username: '',password: ''};
+        this.state = {username: '',password: '',type:'', isLoggedIn:false};
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,19 +27,48 @@ class Login extends Component {
 
     handleSubmit(event) {
             event.preventDefault();
-            alert('Submitted: ' + this.state.username + ' ' + this.state.password);
+            const data = {
+                username: this.state.username,
+                password: this.state.password,
+            }
             const requestOptions = {
                 method: 'POST',
                 headers:{ 'Content-Type': 'application/json'},
-                body: JSON.stringify(this.state)
+                body: JSON.stringify(data)
             };
             fetch('http://localhost:8080/login',requestOptions)
-                .then(response => response.json())
-                .then(response =>console.log(response+ " aa"));
+                .then(response =>  {
+                    if (response.ok) {
+                        alert("Successful login!");
+                        fetch('http://localhost:8080/login/'+this.state.username,)
+                            .then(async response=>{
+                                const d=await response.json();
+                                this.setState({type: d});
+                                this.setState({isLoggedIn: true});
+                                console.log(d);
+
+                                 })
+                    }else if(response.status===404){
+                        alert("This user does not exits!");
+                    }else {
+                        alert("Incorrect password!");
+                    }
+                    return response.json();
+                });
 
     }
 
     render() {
+
+        if (this.state.isLoggedIn) {
+            if(this.state.type==="CUSTOMER"){
+                localStorage.setItem('user',this.state.username );
+                return <Navigate to={"/userprofile"}/>
+            }else{
+                localStorage.setItem('user',this.state.username );
+                return <Navigate to={"/adminprofile"}/>
+            }
+        }
         return (
             <div className="Login">
                 <header className="Login-header">

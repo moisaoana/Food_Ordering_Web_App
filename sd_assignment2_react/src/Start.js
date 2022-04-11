@@ -19,11 +19,6 @@ class Start extends Component {
     }
     render() {
         return (
-            /*
-            <div>
-                <h1>welcome Home!</h1>
-                <Link to="/register">your component</Link>
-            </div>*/
             <div className="Start">
                 <header className="Start-header">
                     <h1 className="Start-title">Welcome to Food Panda!</h1>

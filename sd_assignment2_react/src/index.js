@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter, Route, Routes, Switch} from "react-router-dom";
+import {HashRouter, Route, Routes} from "react-router-dom";
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals'
-import {BrowserRouter} from 'react-router-dom'
 import Start from "./Start";
 import Register from "./Register";
 import Login from "./Login";
+import UserProfile from "./UserProfile";
+import AdminProfile from "./AdminProfile";
+import AddMenuItem from "./AddMenuItem";
+import ViewMenu from "./ViewMenu";
+import Order from "./Order";
+import ViewOrders from "./ViewOrders";
+import ViewOrderHistory from "./ViewOrderHistory";
 
 /*
 ReactDOM.render(
@@ -23,6 +28,13 @@ ReactDOM.render(
                     <Route exact path="/" element={<Start />}/>
                     <Route exact path="/register" element={<Register />}/>
                     <Route exact path="/login" element={<Login />}/>
+                    <Route exact path="/userprofile" element={<UserProfile />}/>
+                    <Route exact path="/adminprofile" element={<AdminProfile />}/>
+                    <Route exact path="/addmenuitem" element={<AddMenuItem/>}/>
+                    <Route exact path="/viewmenu" element={<ViewMenu/>}/>
+                    <Route exact path="/order" element={<Order/>}/>
+                    <Route exact path="/vieworders" element={<ViewOrders/>}/>
+                    <Route exact path="/vieworderhistory" element={<ViewOrderHistory/>}/>
                 </Routes>
             </HashRouter>
     ,
