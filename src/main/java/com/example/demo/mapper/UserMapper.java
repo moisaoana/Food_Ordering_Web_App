@@ -12,6 +12,7 @@ public class UserMapper {
         userDTO.setLastName(user.getLastName());
         userDTO.setUsername(user.getUsername());
         userDTO.setPassword(user.getPassword());
+        userDTO.setEmail(user.getEmail());
         return userDTO;
     }
     public User convertFromDTO(UserDTO userDTO){
@@ -21,6 +22,7 @@ public class UserMapper {
         user.setUsername(userDTO.getUsername());
         user.setPassword(userDTO.getPassword());
         user.setType(userDTO.getType());
+        user.setEmail(userDTO.getEmail());
         return user;
     }
 

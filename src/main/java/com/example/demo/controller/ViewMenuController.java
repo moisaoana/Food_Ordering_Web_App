@@ -17,18 +17,26 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 @RestController
 public class ViewMenuController {
 
+    private final static Logger LOGGER = Logger.getLogger(ViewMenuController.class.getName());
+
     @Autowired
     private FoodItemService foodItemService;
 
-    FoodItemMapper foodItemMapper=new FoodItemMapper();
+    FoodItemMapper foodItemMapper;
+
+    public ViewMenuController(){
+        foodItemMapper=new FoodItemMapper();
+    }
 
     @GetMapping("/viewmenu/{name}")
     @ResponseStatus(HttpStatus.OK)
     public List<FoodItemDTO> getAllItemsFromMenu(@PathVariable String name){
+        LOGGER.info("GET method for displaying all food items from the  menu of restaurant "+name);
         List<FoodItem> foodItemList=foodItemService.findAllByRestaurantName(name);
         List<FoodItemDTO> dtos=new ArrayList<>();
         for(FoodItem f:foodItemList){

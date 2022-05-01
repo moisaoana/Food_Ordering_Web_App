@@ -6,6 +6,7 @@ import com.example.demo.model.User;
 import com.example.demo.model.enums.FoodCategory;
 import com.example.demo.model.enums.Status;
 import com.example.demo.model.enums.UserType;
+import com.example.demo.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
@@ -19,22 +20,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.logging.Logger;
 
 @SpringBootApplication
 //@EnableJpaRepositories(basePackages ="com.example.demo.repository",entityManagerFactoryRef = "sessionFactory")
-@ComponentScan(basePackages ={ "com.example.demo.controller","com.example.demo.repository","com.example.demo.service" })
+@ComponentScan(basePackages ={ "com.example.demo.controller","com.example.demo.repository","com.example.demo.service","com.example.demo.security" })
 public class DemoApplication {
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
-/*
-    @Bean(name="entityManagerFactory")
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-
-        return sessionFactory;
-    }
-*/
     @Bean
     public WebMvcConfigurer corsConfigurer(){
         return new WebMvcConfigurer() {

@@ -1,5 +1,5 @@
 package com.example.demo.model.enums;
 
 public enum UserType {
-    CUSTOMER, ADMIN
+    ROLE_CUSTOMER, ROLE_ADMIN
 }

@@ -27,6 +27,10 @@ public class User {
     @Column(nullable=false)
     private UserType type;
 
+    @Column(nullable=false)
+    private String email;
+
+
     @OneToOne(mappedBy="admin")
     private Restaurant restaurant;
 
@@ -97,24 +101,34 @@ public class User {
         this.orders = orders;
     }
 
-    public User(Integer id, String firstName, String lastName, String username, String password, UserType type) {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public User(Integer id, String firstName, String lastName, String username, String password, UserType type, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.type = type;
+        this.email=email;
     }
     public User(){
 
     }
 
-    public User(String firstName, String lastName, String username, String password, UserType type) {
+    public User(String firstName, String lastName, String username, String password, UserType type, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.type = type;
+        this.email=email;
     }
 
 }

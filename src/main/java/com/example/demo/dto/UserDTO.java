@@ -21,10 +21,13 @@ public class UserDTO {
     @NotNull
     private UserType type;
 
+    @NotNull
+    private String email;
+
     public UserDTO(){
 
     }
-    public UserDTO(String firstName, String lastName, String username, String password,UserType type) {
+    public UserDTO(String firstName, String lastName, String username, String password,UserType type,String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -72,5 +75,11 @@ public class UserDTO {
         this.type = type;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
