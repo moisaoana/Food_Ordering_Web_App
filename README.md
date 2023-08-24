@@ -23,6 +23,8 @@ _Software Design Assignment, Year 3, Semester 2, UTCN_
 
 • search the restaurants by name
 
+• send email to administrator when placing a new order
+
 
 **_Restaurant Administrator features:_**
 
@@ -42,9 +44,13 @@ _Software Design Assignment, Year 3, Semester 2, UTCN_
 
 • change status of order
 
+• export as PDF the menu of his restaurant
+
 
 **_Technical specifications:_** 
 
 • Client-Server application written in Java Spring & React
 
 • JPA Repository
+
+• Security with JWT Token
